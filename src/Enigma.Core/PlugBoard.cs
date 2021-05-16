@@ -1,3 +1,4 @@
+using Enigma.Core.Exceptions;
 using Enigma.Core.Interfaces;
 using System;
 using System.Linq;
@@ -13,6 +14,14 @@ namespace Enigma.Core
         public string BaseSequence => _baseSequence;
         public string WiredSequence => _wiredSequence;
 
+        public int PositionFrom { get; private set; }
+
+        public int PositionTo { get; private set; }
+
+        public char ValueFrom { get; private set; }
+
+        public char ValueTo { get; private set; }
+
         public PlugBoard() { }
         public PlugBoard(string jumpers) 
         {
@@ -27,12 +36,28 @@ namespace Enigma.Core
         public int Process(char inputValue)
         {
             int position = _wiredSequence.IndexOf(inputValue);
+
+            PositionFrom = _baseSequence.IndexOf(inputValue);
+            PositionTo = position;
+            ValueFrom = inputValue;
+            ValueTo = _baseSequence[position];
+
             return position;
         }
 
         public char ProcessReflection(int position)
         {
-            return _wiredSequence[position];
+            var baseValue = _wiredSequence[position];
+
+            var positionFrom = _wiredSequence.IndexOf(baseValue);
+            var positionTo = _baseSequence.IndexOf(_wiredSequence[positionFrom]);
+
+            PositionFrom = positionFrom;
+            PositionTo = positionTo;
+            ValueFrom = _baseSequence[positionFrom]; 
+            ValueTo = baseValue;
+
+            return baseValue;
         }
 
         public void PlugJumpers(string jumpers)
@@ -73,9 +98,9 @@ namespace Enigma.Core
         }
         private static void ValidateIfJumpersHasInvalidCharacters(string jumpers)
         {
-            var regex = new Regex(@"^([a-zA-Z]{2}(\s?))+$");
+            var regex = new Regex(@"^(?:[a-zA-Z]{2}\s)*[a-zA-Z]{2}$");
             if (!regex.IsMatch(jumpers) && !string.IsNullOrEmpty(jumpers))
-                throw new Exception($"Invalid input of jumpers");
+                throw new EnigmaException($"Invalid input of jumpers");
         }
         private static void ValidateIfJumpersHasDuplicatedCharacters(string jumpers)
         {
@@ -86,7 +111,7 @@ namespace Enigma.Core
                                         .Select(g => g.Key)
                                         .ToList();
             if (duplicates.Count > 0)
-                throw new Exception($"Cannot use the same character more than 1 time");
+                throw new EnigmaException($"Cannot use the same character more than 1 time");
         }
     }
 }

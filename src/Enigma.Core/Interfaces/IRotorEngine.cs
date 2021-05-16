@@ -2,7 +2,8 @@ namespace Enigma.Core.Interfaces
 {
     public interface IRotorEngine
     {
-        char RingSettings { get; }
+        char RingSetting { get; }
+        char DisplayWindow { get; }
         string BaseSequence { get; }
         string WiredSequence { get; }
         char[] TurnOverNotch { get; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Enigma.Core.Exceptions;
+using System;
 using Xunit;
 
 namespace Enigma.Core.Tests
@@ -24,6 +25,7 @@ namespace Enigma.Core.Tests
         }
 
         [Theory]
+        [InlineData("string", "Invalid input of jumpers")]
         [InlineData("5A -A5", "Invalid input of jumpers")]
         [InlineData("A6", "Invalid input of jumpers")]
         [InlineData("AAA BB CC", "Invalid input of jumpers")]
@@ -37,7 +39,7 @@ namespace Enigma.Core.Tests
 
             //Act & Assert
             var exception =
-                Assert.Throws<Exception>(() => plugBoard.PlugJumpers(jumpers));
+                Assert.Throws<EnigmaException>(() => plugBoard.PlugJumpers(jumpers));
 
             Assert.Equal(expectedError, exception.Message);
         }

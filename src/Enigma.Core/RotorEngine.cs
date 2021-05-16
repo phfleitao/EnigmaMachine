@@ -9,7 +9,8 @@ namespace Enigma.Core
         private readonly char defaultInnerRingSettingCharacter;
         private readonly string defaultBaseSequence;
         private readonly string defaultWiredSequence;
-        public char RingSettings { get; private set; }
+        public char RingSetting { get; private set; }
+        public char DisplayWindow => BaseSequence[0];
         public string BaseSequence { get; private set; }
         public string WiredSequence { get; private set; }
         public char[] TurnOverNotch { get; private set; }
@@ -19,7 +20,7 @@ namespace Enigma.Core
             defaultInnerRingSettingCharacter = innerRingSettingCharacter;
             defaultBaseSequence = baseSequence;
             defaultWiredSequence = wiredSequence;
-            RingSettings = defaultInnerRingSettingCharacter;
+            RingSetting = defaultInnerRingSettingCharacter;
             BaseSequence = defaultBaseSequence;
             WiredSequence = defaultWiredSequence;
             ConvertStringToTurnOverNotchArray(turnOverNotch);
@@ -39,7 +40,7 @@ namespace Enigma.Core
             ResetRingSettings();
 
             var innerRingSettingCharacterIndex = BaseSequence.IndexOf(innerRingSettingCharacter);
-            var dotPosition = WiredSequence.IndexOf(RingSettings);
+            var dotPosition = WiredSequence.IndexOf(RingSetting);
                             
             for (var i = 0; i < innerRingSettingCharacterIndex; i++)
             {
@@ -67,15 +68,15 @@ namespace Enigma.Core
         }
 
         private void ResetRingSettings(){
-            RingSettings = defaultInnerRingSettingCharacter;
+            RingSetting = defaultInnerRingSettingCharacter;
             BaseSequence = defaultBaseSequence;
             WiredSequence = defaultWiredSequence;
         }
-        private string RotateLeft(string sequence, int count)
+        private static string RotateLeft(string sequence, int count)
         {
             return sequence[count..] + sequence[..count];
         }
-        private string RotateRight(string sequence, int count)
+        private static string RotateRight(string sequence, int count)
         {
             return sequence[^count..] + sequence[..^count];
         }

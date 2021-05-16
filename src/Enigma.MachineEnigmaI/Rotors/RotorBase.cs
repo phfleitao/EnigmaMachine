@@ -11,7 +11,17 @@ namespace Enigma.MachineEnigmaI.Rotors
         private const string DEFAULT_SEQUENCE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         protected readonly IRotorEngine _rotorEngine;
+        public char RingSetting => _rotorEngine.RingSetting;
+        public char DisplayWindow => _rotorEngine.DisplayWindow;
+        public string BaseSequence => _rotorEngine.BaseSequence;
+        public string WiredSequence => _rotorEngine.WiredSequence;
+        public char[] TurnOverNotch => _rotorEngine.TurnOverNotch;
         public bool IsTurnedOver { get; protected set; } = false;
+        public int PositionFrom { get; protected set; }
+        public int PositionTo { get; protected set; }
+        public char ValueFrom { get; protected set; }
+        public char ValueTo { get; protected set; }
+
         public RotorBase(string defaultWiredSequence, string turnOverNotch)
         {
             _rotorEngine = new RotorEngine(DEFAULT_RINGSETTINGS, DEFAULT_SEQUENCE, defaultWiredSequence, turnOverNotch);
@@ -39,6 +49,11 @@ namespace Enigma.MachineEnigmaI.Rotors
             char wiredValue = _rotorEngine.WiredSequence[position];
             int outputPosition = _rotorEngine.BaseSequence.IndexOf(wiredValue);
 
+            PositionFrom = position;
+            PositionTo = outputPosition;
+            ValueFrom = _rotorEngine.BaseSequence[position];
+            ValueTo = wiredValue;
+
             return outputPosition;
         }
 
@@ -46,6 +61,11 @@ namespace Enigma.MachineEnigmaI.Rotors
         {
             char reflectedValue = _rotorEngine.BaseSequence[position];
             int outputPosition = _rotorEngine.WiredSequence.IndexOf(reflectedValue);
+
+            PositionFrom = position;
+            PositionTo = outputPosition;
+            ValueFrom = _rotorEngine.WiredSequence[position];
+            ValueTo = reflectedValue;
 
             return outputPosition;
         }

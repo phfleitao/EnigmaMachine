@@ -89,24 +89,5 @@ namespace Enigma.Core.Tests
             Assert.Equal(firstCalculatedSequence, firstExpectedSequence);
             Assert.Equal(secondCalculatedSequence, secondExpectedSequence);
         }
-
-        [Theory] 
-        [InlineData(DEFAULT_SEQUENCE, 1, "ZABCDEFGHIJKLMNOPQRSTUVWXY")]
-        [InlineData(DEFAULT_SEQUENCE, 3, "XYZABCDEFGHIJKLMNOPQRSTUVW")]
-        public void RotateRight_MustMakeAValidRotation(string sequence, int numberOfRotations, string expecetedSequence)
-        {
-            //Arrange          
-            Type type = typeof(RotorEngine);
-            var RotateRight = Activator.CreateInstance(type, DEFAULT_RINGSETTINGS, DEFAULT_SEQUENCE, DEFAULT_WIREDSEQUENCE, DEFAULT_TURNOVER_NOTCH);
-            MethodInfo method = type.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance)
-            .Where(x => x.Name == "RotateRight" && x.IsPrivate)
-            .First();
-
-            //Act
-            var calculatedSequence = (string)method.Invoke(RotateRight, new object [] {sequence, numberOfRotations});
-
-            //Assert
-            Assert.Equal(calculatedSequence, expecetedSequence);
-        }
     }
 }

@@ -1,19 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AFC41B5B-CA7D-4EA6-9260-0697F09CDCC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enigma.Core", "src\Enigma.Core\Enigma.Core.csproj", "{C80DD18D-39C0-44D5-8F96-E999C65CA1BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Enigma.Core", "src\Enigma.Core\Enigma.Core.csproj", "{C80DD18D-39C0-44D5-8F96-E999C65CA1BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enigma.EnigmaI", "src\Enigma.MachineEnigmaI\Enigma.EnigmaI.csproj", "{E467371F-5B58-4A3C-9C59-99AC8B5ACE29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Enigma.EnigmaI", "src\Enigma.MachineEnigmaI\Enigma.EnigmaI.csproj", "{E467371F-5B58-4A3C-9C59-99AC8B5ACE29}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{BE5A4B15-2B2F-48CD-831C-B92F6E4EF78A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enigma.Core.Tests", "tests\Enigma.Core.Tests\Enigma.Core.Tests.csproj", "{80250507-027B-4EB8-8B53-0A0586D0552A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Enigma.Core.Tests", "tests\Enigma.Core.Tests\Enigma.Core.Tests.csproj", "{80250507-027B-4EB8-8B53-0A0586D0552A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enigma.MachineEnigmaI.Tests", "tests\Enigma.MachineEnigmaI.Tests\Enigma.MachineEnigmaI.Tests.csproj", "{7EA7E66C-93EB-4FCE-886A-E886A8DA34F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Enigma.MachineEnigmaI.Tests", "tests\Enigma.MachineEnigmaI.Tests\Enigma.MachineEnigmaI.Tests.csproj", "{7EA7E66C-93EB-4FCE-886A-E886A8DA34F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnigmaAPI", "src\EnigmaAPI\EnigmaAPI.csproj", "{BC358FDD-4193-48E5-88AD-60665F271016}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,9 +25,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C80DD18D-39C0-44D5-8F96-E999C65CA1BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -76,11 +75,30 @@ Global
 		{7EA7E66C-93EB-4FCE-886A-E886A8DA34F5}.Release|x64.Build.0 = Release|Any CPU
 		{7EA7E66C-93EB-4FCE-886A-E886A8DA34F5}.Release|x86.ActiveCfg = Release|Any CPU
 		{7EA7E66C-93EB-4FCE-886A-E886A8DA34F5}.Release|x86.Build.0 = Release|Any CPU
+		{BC358FDD-4193-48E5-88AD-60665F271016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC358FDD-4193-48E5-88AD-60665F271016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC358FDD-4193-48E5-88AD-60665F271016}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BC358FDD-4193-48E5-88AD-60665F271016}.Debug|x64.Build.0 = Debug|Any CPU
+		{BC358FDD-4193-48E5-88AD-60665F271016}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BC358FDD-4193-48E5-88AD-60665F271016}.Debug|x86.Build.0 = Debug|Any CPU
+		{BC358FDD-4193-48E5-88AD-60665F271016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC358FDD-4193-48E5-88AD-60665F271016}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC358FDD-4193-48E5-88AD-60665F271016}.Release|x64.ActiveCfg = Release|Any CPU
+		{BC358FDD-4193-48E5-88AD-60665F271016}.Release|x64.Build.0 = Release|Any CPU
+		{BC358FDD-4193-48E5-88AD-60665F271016}.Release|x86.ActiveCfg = Release|Any CPU
+		{BC358FDD-4193-48E5-88AD-60665F271016}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C80DD18D-39C0-44D5-8F96-E999C65CA1BA} = {AFC41B5B-CA7D-4EA6-9260-0697F09CDCC3}
 		{E467371F-5B58-4A3C-9C59-99AC8B5ACE29} = {AFC41B5B-CA7D-4EA6-9260-0697F09CDCC3}
 		{80250507-027B-4EB8-8B53-0A0586D0552A} = {BE5A4B15-2B2F-48CD-831C-B92F6E4EF78A}
 		{7EA7E66C-93EB-4FCE-886A-E886A8DA34F5} = {BE5A4B15-2B2F-48CD-831C-B92F6E4EF78A}
+		{BC358FDD-4193-48E5-88AD-60665F271016} = {AFC41B5B-CA7D-4EA6-9260-0697F09CDCC3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {57547F30-4529-47D0-8849-D1DA3016F30C}
 	EndGlobalSection
 EndGlobal
