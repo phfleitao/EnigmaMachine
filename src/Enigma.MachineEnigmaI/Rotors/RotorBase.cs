@@ -64,8 +64,8 @@ namespace Enigma.MachineEnigmaI.Rotors
 
             PositionFrom = position;
             PositionTo = outputPosition;
-            ValueFrom = _rotorEngine.WiredSequence[position];
-            ValueTo = reflectedValue;
+            ValueFrom = reflectedValue;
+            ValueTo = _rotorEngine.BaseSequence[outputPosition];
 
             return outputPosition;
         }
